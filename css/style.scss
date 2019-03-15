@@ -1,0 +1,1697 @@
+// Website Sample này được code bời Dương Hoàng Việt
+
+* { margin: 0; padding: 0}
+button:focus { outline: 0}
+
+// Font
+@mixin Roboto($size,$weight) {
+    font-family: 'Roboto Slab', serif;
+    font-size: $size;
+    font-weight: $weight;
+}
+
+@mixin DancingScript($size,$weight) {
+    font-family: 'Dancing Script', cursive;
+    font-size: $size;
+    font-weight: $weight;
+}
+
+// Font-size
+$f50: 50px;
+$f38: 38px;
+$f36: 36px;
+$f30: 30px;
+$f28: 28px;
+$f26: 26px;
+$f24: 24px;
+$f22: 22px;
+$f20: 20px;
+$f18: 18px;
+$f16: 16px;
+$f14: 14px;
+$f13: 13px;
+$f12: 12px;
+
+//Color:
+$text-color: #777777;
+$silver-color: #dddddd;
+$title-color: #333333;
+$dancing-font-color: #feb518;
+$white: #fff;
+$s2: #6e6e6e;
+
+// Transition
+$trans: 0.4s;
+
+// Font-Attribute
+$regular: 400;
+$bold: 700;
+
+// More
+%read-more-button {
+    background: $dancing-font-color;
+    padding: 10px 40px;
+    position: relative;
+    text-decoration: none;
+    color: $title-color;
+    @include Roboto($f14,$bold);
+    line-height: 26px;
+    border: 2px solid transparent;
+    margin-top: 25px;
+    transition: $trans;
+    &:hover {
+        background: $white;
+        color: $dancing-font-color;
+        border: 2px solid $dancing-font-color;
+    }
+}
+%padding-section-1 {
+    padding-top: 118px;
+    padding-bottom: 118px;
+}
+%padding-block {
+    padding: 222px 0;
+}
+%title {
+    margin-bottom: 60px;
+    h5 {
+        @include DancingScript($f38,$bold);
+        color: $dancing-font-color;
+    }
+    h4 {
+        @include Roboto($f36,$bold);
+        color: $title-color;
+    }
+}
+
+
+// Begin
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    #header-top {
+        height: 40px;
+        background: $title-color;
+        .social {
+            height: 40px;
+            border-right: 1px solid $s2;
+            ul {
+                li {
+                    line-height: 40px;
+                    padding: 0 15px;
+                    a {
+                        text-decoration: none;
+                        font-size: $f14;
+                        color: $silver-color;
+                        transition: $trans;
+                        &:hover {
+                            color: $dancing-font-color;
+                        }
+                    }
+                }
+            }
+        } //end social
+        .phone {
+            height: 40px;
+            @include Roboto($f13,$regular);
+            line-height: 40px;
+            color: $silver-color;
+            padding-left: 24px;
+        }
+
+        .opening-hours {
+            height: 40px;
+            p {
+                @include Roboto($f13,$regular);
+                height:40px;
+                line-height: 40px;
+                color: $silver-color;
+                border-right: 1px solid $s2;
+                border-left: 1px solid $s2;
+                float: right;
+                padding: 0px 24px;
+            }
+        }
+    } // end header-top
+    // Navigation
+    #hidden-nav {
+        width: 240px;
+        height: 100%;
+        background: rgba(0,0,0,0.96);
+        position: fixed;
+        top:0;
+        right: 0;
+        z-index: 9999;
+        transform: translateX(100%);
+        transition: $trans;
+        visibility: hidden;
+        &.opened {
+            transform: translateX(0);
+            visibility: visible;
+        }
+        ul {
+            list-style: none;
+            padding-top: 45px;
+            li {
+                margin-bottom: 10px;
+                padding-left: 20px;
+                a {
+                    text-decoration: none;
+                    @include Roboto($f16,$regular);
+                    text-transform: uppercase;
+                    color: $silver-color;
+                }
+                a.active {
+                    color: $dancing-font-color;
+                }
+                a.reservation {
+                    display: inline-block;
+                    margin-top: 10px;
+                    padding: 12px 33px;
+                    background: $dancing-font-color;
+                    border: 2px solid $dancing-font-color;
+                    transition: $trans;
+                    text-decoration: none;
+                    @include Roboto($f14,$regular);
+                    color: $title-color;
+                    &:hover {
+                        background: none;
+                        color: $silver-color;
+                    }
+                }
+            }
+        }
+    }// end hidden-nav
+    .overlay-all {
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.164);
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1001;
+        opacity: 0;
+        visibility: hidden;
+        transition: $trans;
+        &.apperance {
+            opacity: 1;
+            visibility: visible;
+        }
+    }// end overlay-all
+    #Nav {
+        background-color: rgba(0,0,0,0.30);
+        width: 100%;
+        #Navigation {
+            ul {
+                li {
+                    a.nav-link {
+                        text-decoration: none;
+                        @include Roboto($f14,$regular);
+                        padding: 0 16px;
+                        color: $white;
+                        transition: $trans;
+                        &:hover {
+                            color: $dancing-font-color;
+                        }
+                        &.active {
+                            color: $dancing-font-color;
+                        }
+                    }
+                    a.reservation {
+                        padding: 12px 33px;
+                        background: none;
+                        border: 2px solid $white;
+                        transition: $trans;
+                        text-decoration: none;
+                        @include Roboto($f14,$regular);
+                        color: $white;
+                        &:hover {
+                            background: $dancing-font-color;
+                            color: $white;
+                        }
+                    }
+                }
+            }
+        }// end Navigation
+        button.open-button {
+            float: right;
+            border: none;
+            display: none;
+            background:$dancing-font-color;
+            border-radius: 0;
+            i {
+                color: $white;
+            }
+        }
+    }// end Nav
+    #Nav.fixedTop {
+        background-color: rgba(0,0,0,0.96);
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 99;
+        width: 100%;
+    }// end Nav-fixedTop
+}
+
+main {
+    article {
+        .title {
+            @extend %title;
+        }
+        ._1row {
+            clear: both;
+            width: 100%;
+        }
+        #slider {
+            ._1slide {
+                height: 95vh;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+                .overlay {
+                   width:100%;
+                   height: 100%;
+                   background-color: rgba(0, 0, 0, 0.5)!important;
+                   position: absolute;
+                   top: 0;
+                   left: 0;
+                }
+                .slide-caption {
+                    bottom: 30vh;
+                    overflow: hidden;
+                    h2.title-caption {
+                        @include Roboto($f50,$bold);
+                        color: $white;
+                        letter-spacing: 2px;
+                        padding-bottom: 20px;
+                    }
+                    p.more {
+                        @include Roboto($f14,$regular);
+                        color: $white;
+                        padding-bottom: 30px;
+                    }
+                    a.read {
+                        @include Roboto($f14,$regular);
+                        color: $title-color;
+                        background: $dancing-font-color;
+                        border: 2px solid transparent;
+                        transition: $trans;
+                        text-decoration: none;
+                        padding: 10px 40px;
+                        &:hover {
+                            background: none;
+                            color: $white;
+                            border: 2px solid $dancing-font-color;
+                        }
+                    }
+                } // end slide-caption
+            }
+            a.left,a.right {
+                transition: $trans;
+                width: 40px;
+                height: 40px;
+                border: 1px solid $white;
+                background: $s2;
+                display: block;
+                position: absolute;
+                top: 50%;
+                line-height: 40px;
+                &:hover {
+                    background: rgba(0, 0, 0, 0.5);
+                }
+                span {
+                    font-size: $f20;
+                    line-height: 40px;
+                    color: $white;
+                    transform: translateY(-1px);
+                    display: block;
+                }
+            }
+            a.left {
+                left: 2%;
+            }
+            a.right {
+                right: 2%;
+            }
+            ol.indicators {
+                li {
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 50%;
+                    border: 1px solid $white;
+                    background: rgba(0, 0, 0, 0);
+                    overflow: hidden;
+                    transition: background $trans ease;
+                }
+                li.active {
+                    background: $white;
+                }
+            }
+        } //end slider
+        #introduce {
+            @extend %padding-section-1;
+            img {width: 100%;}
+            .intro {
+                margin-top: 60px;
+                h5 {
+                    @include DancingScript($f30,$bold);
+                    color: $dancing-font-color;
+                }
+                h4 {
+                    @include Roboto($f26,$bold);
+                    color: $title-color;
+                    padding-bottom: 20px;
+                }
+                p {
+                    @include Roboto($f14,$regular);
+                    color: $text-color;
+                    padding-bottom: 30px;
+                }
+                a.read-more {
+                    @extend %read-more-button;
+                }
+            }
+        } //end introduce
+        #block_1 {
+            .block_1-inner {
+                display: block;
+                background-image: url(../images/1.jpg);
+                background-attachment: fixed;
+                background-position: center center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                position: relative;
+                width: 100%;
+                @extend %padding-block;
+                &:before {
+                    content:'';
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.5);
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+                .title {
+                    margin-bottom: 0px;
+                    h5 {
+                        @include DancingScript($f38,$bold);
+                        color: $dancing-font-color;
+                    }
+                    h4 {
+                        @include Roboto($f36,$bold);
+                        color: $white;
+                    }
+                }
+            }
+        } //end block_1
+        #special {
+            @extend %padding-section-1;
+            ._1-dish {
+                cursor: pointer;
+                .thumbnail {
+                    position: relative;
+                    transition: $trans;
+                    span {
+                        padding: 0px 15px;
+                        @include Roboto($f12,$bold);
+                        color: $title-color;
+                        background: $dancing-font-color;
+                        border-radius: 3px;
+                        position: absolute;
+                        top: 20px;
+                        left: 20px;
+                        z-index: 3;
+                    }
+                    img {
+                        width: 100%;
+                    }
+                    &:before {
+                        content :'';
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0, 0, 0, 0.164);
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        transition: $trans;
+                    }
+                } // end thumbnail
+                .information {
+                    margin-top: 24px;
+                    a {
+                        display: block;
+                        float: left;
+                        color: $title-color;
+                        @include Roboto($f18,$bold);
+                        text-decoration: none;
+                        transition: $trans;
+                    }
+                    span.price {
+                        @include Roboto($f18,$bold );
+                        color: $title-color;
+                        float: right;
+                    }
+                }
+                p.desc {
+                    @include Roboto($f16,$regular);
+                    color: $text-color;
+                    float: left;
+                    margin-top: 10px;
+                }
+                &:hover {
+                    .thumbnail {
+                        &:before {
+                            background: none;
+                        }
+                    }
+                    .information {
+                        a {
+                            color: $dancing-font-color;
+                        }
+                    }
+                }
+            }// end 1-dish
+        }// end special dish
+        #block_2 {
+            @extend #block_1;
+            .block_1-inner {
+                background-image: url(../images/2.jpg);
+            };
+        }// end block_2
+        #menu-tab {
+            @extend %padding-section-1;
+            padding-bottom: 0!important;
+            ul.list-tab {
+                position: relative;
+                z-index: 2;
+                top: 1px;
+                margin-top: -160px;
+                list-style: none;
+                li {
+                    @include Roboto($f16,$regular);
+                    display: inline-block;
+                    padding: 0 20px;
+                    color: $white;
+                    cursor: pointer;
+                    transition: $trans;
+                    &:hover {
+                        color: $dancing-font-color;
+                    }
+                    span.active {
+                        color: $dancing-font-color;
+                    }
+                }
+            }// end list-tab
+            .overlay-detail-info {
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.164);
+                top: 0;
+                left: 0;
+                z-index: 998;
+                opacity: 0;
+                visibility: hidden;
+                transition: $trans;
+                &.show-3 {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+            ul {
+                list-style: none;
+                margin-bottom: 0!important;
+                li {
+                    ._1tab {
+                        @extend %padding-section-1;
+                        display: none;
+                        opacity: 0;
+                        visibility: hidden;
+                        ._1dish {
+                            position: relative;
+                            margin-bottom: 20px;
+                            ._1dish-inner {
+                                position: relative;
+                                min-height: 90px;
+                                padding: 14px 0px 0px 110px;
+                                .image-box {
+                                    position:  absolute;
+                                    width: 90px;
+                                    height: 90px;
+                                    left: 0;
+                                    top: 0;
+                                    border: 1px solid $silver-color;
+                                    img { width: 100%;}
+                                }
+                                span.new {
+                                    @include Roboto($f12,$regular);
+                                    color: $title-color;
+                                    padding: 0 10px;
+                                    border-radius: 3px;
+                                    position: absolute;
+                                    top: 0px;
+                                    left: 0px;
+                                    background: $dancing-font-color;
+                                    z-index: 10;
+                                }
+                                ul.info {
+                                    list-style: none;
+                                    li {
+                                        cursor: pointer;
+                                        @include Roboto($f16,$regular);
+                                        color: $title-color;
+                                        span.name {
+                                            float: left;
+                                            a {
+                                                transition: $trans;
+                                                text-decoration: none;
+                                                color: $title-color;
+                                                &:hover {
+                                                    color: $dancing-font-color;
+                                                }
+                                            }
+                                        }
+                                        span.dotted {
+                                            padding-left:30px;
+                                        }
+                                        span.price {
+                                            float: right;
+                                        }
+                                        span.desc {
+                                            float: left;
+                                            color: $text-color;
+                                            margin-top: 10px;
+                                        }
+                                    }
+                                }
+                                .detail-info {
+                                    width: 780px;
+                                    height: auto;
+                                    position: fixed;
+                                    top:50%;
+                                    left: 50%;
+                                    z-index: 999;
+                                    transform: translateX(-50%) translateY(-50%) scale(0.9);
+                                    background: $white;
+                                    padding: 40px;
+                                    transition: $trans;
+                                    opacity: 0;
+                                    visibility: hidden;
+                                    &.show-2 {
+                                        opacity: 1;
+                                        visibility: visible;
+                                        transform: translateX(-50%) translateY(-50%) scale(1);
+                                    }
+                                    .img-thumbnail-dish {
+                                        float: left;
+                                        position: relative;
+                                        width: 35%;
+                                        height:100%;
+                                        img {
+                                            width: 100%;
+                                        }
+                                        &:hover {
+                                            .nav-button {
+                                                a.prev,a.next {
+                                                    opacity: 1;
+                                                    visibility: visible;
+                                                }
+                                            }
+                                        }
+                                    }// end img-thumbnail-dish
+                                    
+                                    .info-block {
+                                        width: 65%;
+                                        margin-left: 38%;
+                                        p.name {
+                                            @include Roboto($f20,$regular);
+                                            color: $title-color;
+                                            padding-top: 15px;
+                                        }
+                                        p.describe {
+                                            @include Roboto($f14,$regular);
+                                            color: $text-color;
+                                        }
+                                        p.cost {
+                                            @include Roboto($f18,$regular);
+                                            color: $dancing-font-color;
+                                        }
+                                    }// end info-block
+
+                                }
+                                
+                            }
+                        }// end 1dish
+                    }// end 1 tab
+                }
+            }
+            ._1tab.show {
+                display: flex;
+                opacity: 1;
+                visibility: visible;
+                animation: fadeIn $trans ease;
+            }
+        }// end tab
+        #feedback {
+            @extend %padding-section-1;
+            position: relative;
+            background: {
+                image: url(../images/3.jpg);
+                size: cover;
+                repeat: no-repeat;
+                position: center center;
+                attachment: fixed;
+            }
+            &:before {
+                width: 100%;
+                height: 100%;
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: rgba(0, 0, 0, 0.5);
+            }
+            ._1-fb-slide {
+                color: $white;
+                @include Roboto($f18,$regular);
+                p.quote-sign {
+                    font-size: $f26;
+                    margin-bottom: 45px;
+                }
+                p.people {
+                    @include DancingScript($f28,$regular);
+                    color: $dancing-font-color;
+                    margin-top: 34px;
+                }
+            }
+        }// end feedback
+        #chefs {
+            @extend %padding-section-1;
+            ._1-chef {
+                ._1-chef-inner {
+                    transition: $trans;
+                    .image-box {
+                        position: relative;
+                        overflow: hidden;
+                        border-radius: 50%;
+                        margin-bottom: 25px;
+                        box-shadow: 0px 3px 13px 0px #00000045;
+                        img {
+                            width: 100%;
+                        }
+                        .overlay {
+                            transition: $trans;
+                            opacity: 0;
+                            visibility: hidden;
+                            background: #feb518c7;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 50%;
+                            z-index: 3;
+                            transform: scale(0.95);
+                            ul {
+                                position: absolute;
+                                top: 45%;
+                                left:30%;
+                                list-style: none;
+                                display: flex;
+                                li {
+                                    padding: 0 12px;
+                                    a {
+                                        text-decoration: none;
+                                        color: $white;
+                                        font-size: $f20;
+                                        transition: $trans;
+                                        &:hover {
+                                            color: $title-color;
+                                        }
+                                    }
+                                }
+                            }
+                        }// end overlay
+                    }
+                    .name-and-job {
+                        @include Roboto($f20,$regular);
+                        color: $title-color;
+                        p.job {
+                            margin-top: 16px;
+                            color: $dancing-font-color;
+                        }
+                    }
+                    &:hover {
+                        .image-box {
+                            .overlay {
+                                opacity: 1;
+                                visibility: visible;
+                            }
+                        }
+                    }
+                }
+            }// end 1 chef
+        }// end chefs
+        #reservation {
+            @extend %padding-section-1;
+            position: relative;
+            background: {
+                image: url(../images/4.jpg);
+                size: cover;
+                position: center center;
+                repeat: no-repeat;
+                attachment: fixed;
+            }
+            &:before {
+                width: 100%;
+                height: 100%;
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: rgba(0, 0, 0, 0.5);
+            }
+            .title {
+                h4 {
+                    color: $white;
+                }
+            }
+            form {
+                width:100%;
+                display: flex;
+                flex-wrap: wrap;
+                p.valid-form {
+                    margin-bottom: 30px;
+                    input {
+                        width: 100%;
+                        padding: 10px 25px;
+                        background: rgba(0, 0, 0, 0.3);
+                        border-style: solid;
+                        border: 1px solid $s2;
+                        color: $white;
+                        transition: $trans;
+                        position: relative;
+                        height: 45px;
+                        display: block;
+                    }
+                    input:focus {
+                        border: 1px solid $dancing-font-color;
+                        outline: $dancing-font-color;
+                    }
+                    input::placeholder {
+                        @include Roboto($f13,$regular);
+                        color: $white;
+                    }
+                    input[type='text']{
+                        @include Roboto($f13,$regular);
+                    }
+                    input[type=number]::-webkit-inner-spin-button, 
+                    input[type=number]::-webkit-outer-spin-button { 
+                    -webkit-appearance: none; 
+                    margin: 0; 
+                    }
+                }
+                button#send {
+                    padding: 16px 45px;
+                    color: $title-color;
+                    background: $dancing-font-color;
+                    @include Roboto($f12,$bold);
+                    text-transform: uppercase;
+                    transition: $trans;
+                    border-radius: 0;
+                    border: 1px solid $dancing-font-color;
+                    margin-top: 30px;
+                    &:hover {
+                        background: rgba(0, 0, 0, 0.3);
+                        color: $dancing-font-color;
+    
+                    }
+                }
+            }// end form
+        }// end reservation
+        #meeting {
+            @extend %padding-section-1;
+            img {
+                width: 100%;
+            }
+            .content {
+                padding-left: 0!important;
+                .title {
+                    h4 {
+                        font-size: $f28;
+                    }
+                    margin-bottom: 24px;
+                }
+                p {
+                    @include Roboto($f14,$regular);
+                    color: $text-color;
+                }
+                h6 {
+                    @include Roboto($f16,$regular);
+                    color: $title-color;
+                    margin-bottom: 10px;
+                    margin-top: 18px;
+                }
+                a.read-more {
+                    @extend %read-more-button;
+                    display: inline-block;
+                    margin-top: 10px;
+                    text-transform: uppercase;
+                }
+            }
+            .picture-1 {
+                padding-right: 5px!important;
+            }
+            .picture-2 {
+                padding-left: 5px!important;
+            }
+        }// end metting
+
+        // ABOUT US PAGE
+        #block_3 {
+            @extend #block_1;
+            .block_1-inner {
+                background-image: url(../images/5.jpg);
+            }
+        }// end block_3
+        #meeting2 {
+            @extend %padding-section-1;
+            img {
+                width: 100%;
+            }
+            .content {
+                padding-left: 0!important;
+                .title {
+                    @extend %title;
+                    h4 {
+                        font-size: $f28;
+                    }
+                    margin-bottom: 24px;
+                }
+                p {
+                    @include Roboto($f14,$regular);
+                    color: $text-color;
+                }
+                h6 {
+                    @include Roboto($f16,$regular);
+                    color: $title-color;
+                    margin-bottom: 10px;
+                    margin-top: 18px;
+                }
+                a.read-more {
+                    @extend %read-more-button;
+                    display: inline-block;
+                    margin-top: 10px;
+                    text-transform: uppercase;
+                }
+            }
+            .collumn {
+                position: relative;
+                padding: 0 2px;
+            }
+        }// end metting2
+        #services {
+            @extend %padding-section-1;
+            .img-box {
+                margin-bottom: 35px;
+            }
+            .widget-content {
+                p.lable {
+                    @include Roboto($f22,$bold);
+                    margin-bottom: 30px;
+                }
+                p.text {
+                    @include Roboto($f14,$regular);
+                    color: $text-color;
+                }
+            }
+        }// end services
+        #master-chef {
+            padding-top: 32px;
+            padding-bottom: 0!important;
+            background: {
+                image: url(../images/6.png);
+                repeat: no-repeat;
+                size: cover;
+                attachment: fixed;
+                position: center center;
+            }
+            .img-box {
+                img {
+                    width: 100%;
+                }
+            }
+            .master-chef-infor {
+                margin-top: 17%;
+                .name-chef {
+                    @include Roboto($f30,$bold);
+                    color: $title-color;
+                    margin-bottom: 5px;
+                }
+                .job {
+                    @include DancingScript($f28,$regular);
+                    color: $dancing-font-color;
+                    margin-bottom: 30px;
+                }
+                .infor {
+                    @include Roboto($f14,$regular);
+                    color: $text-color;
+                }
+                ul {
+                    margin-top: 35px;
+                    list-style: none;
+                    display: flex;
+                    li {
+                        width: 40px;
+                        height: 40px;
+                        line-height: 40px;
+                        border-radius: 0;
+                        background: $title-color;
+                        margin-right: 10px;
+                        text-align: center;
+                        a {
+                            text-decoration: none;
+                            transition: $trans;
+                            color: $white;
+                        }
+                        &:hover {
+                            a {
+                                color: $dancing-font-color;
+                            }
+                        }
+                    }
+                }
+            }
+        }// end master-chef
+        #contact-us {
+            padding: 70px 0;
+            position: relative;
+            background : {
+                image: url(../images/6.jpg);
+                size: cover;
+                repeat: no-repeat;
+                attachment: fixed;
+                position: center center;
+            }
+            &:before {
+                content:'';
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            .contact-us-inner {
+                display: inline-block;
+                .text {
+                    padding-top: 10px;
+                    @include Roboto($f30,$regular);
+                    color: $white;
+                    float: left;
+                    line-height: 24px;
+                }
+                a.read-more {
+                    @extend %read-more-button;
+                    float: right;
+                    margin-top: 0;
+                }
+            }
+        }// end contact-us
+
+        //RESERVATION PAGE
+        #block_4 {
+            @extend #block_1;
+            .block_1-inner {
+                background-image: url(../images/4.jpg);
+            }
+        }// end block_4
+        #booking-table {
+            @extend %padding-section-1;
+            .booking {
+                border-bottom: 1px solid $silver-color;
+                padding-bottom: 30px;
+                margin-bottom: 60px;
+                p {
+                    @include Roboto($f16,$regular);
+                    color: $text-color;
+                    span {
+                        color: $dancing-font-color;
+                    }
+                    &.phone-number {
+                        font-size: $f36;
+                        color: $title-color;
+                    }
+                }
+            }
+            form {
+                width:100%;
+                display: flex;
+                flex-wrap: wrap;
+                p.valid-form {
+                    margin-bottom: 30px;
+                    input {
+                        width: 100%;
+                        padding: 10px 25px;
+                        background: $white;
+                        border-style: solid;
+                        border: 1px solid $s2;
+                        color: $title-color;
+                        transition: $trans;
+                        position: relative;
+                        height: 45px;
+                        display: block;
+                    }
+                    input:focus {
+                        border: 1px solid $dancing-font-color;
+                        outline: $dancing-font-color;
+                    }
+                    input::placeholder {
+                        @include Roboto($f13,$regular);
+                        color: $title-color;
+                    }
+                    input[type='text']{
+                        @include Roboto($f13,$regular);
+                    }
+                    input[type=number]::-webkit-inner-spin-button, 
+                    input[type=number]::-webkit-outer-spin-button { 
+                    -webkit-appearance: none; 
+                    margin: 0; 
+                    }
+                }
+                button#send {
+                    padding: 16px 45px;
+                    color: $title-color;
+                    background: $dancing-font-color;
+                    @include Roboto($f12,$bold);
+                    text-transform: uppercase;
+                    transition: $trans;
+                    border-radius: 0;
+                    border: 1px solid $dancing-font-color;
+                    margin-top: 30px;
+                    &:hover {
+                        background: $white;
+                        color: $dancing-font-color;
+    
+                    }
+                }
+            }// end form
+        }// end booking-table
+        #block_5 {
+            @extend #block_1;
+            .block_1-inner {
+                background-image: url(../images/4.jpg);
+            }
+        }// end block_5
+
+        //MENU PAGE
+        #block_6 {
+            @extend #block_1;
+            .block_1-inner {
+                background-image: url(../images/5.jpg);
+            }
+        }// end block_6
+        #block_7 {
+            @extend #block_2;
+        }// end block_7
+
+
+        //GALLERY PAGE
+        #block_8 {
+            @extend #block_1;
+            .block_1-inner {
+                background-image: url(../images/5.jpg);
+            }
+        }// end block 8
+        .pagination {
+            margin-top: 50px;
+            position: relative;
+            ul.page-number {
+                list-style: none; 
+                display: inline-flex;
+                margin-left: 0;
+                li {
+                    margin-right: 10px;
+                    span.current-page {
+                        @include Roboto($f18,$regular);
+                        border-radius: 50%;
+                        background: $dancing-font-color;
+                        padding: 10px 18px;
+                        color: $white;
+                    }
+                    a {
+                        text-decoration: none;
+                        @include Roboto($f18,$regular);
+                        border-radius: 50%;
+                        background: transparent;
+                        padding: 10px 18px;
+                        color: $title-color;
+                        transition: $trans;
+                        &:hover {
+                            background: $dancing-font-color;
+                            color: $white;
+                        }
+                    }
+                }
+            }
+        }
+        #gallery {
+            @extend %padding-section-1;
+            ._1-box {
+                margin-bottom: 30px;
+                a {
+                    position: relative;
+                    overflow: hidden;
+                    display: block;
+                    transition: $trans;
+                    img {width:100%}
+                    &::after {
+                        content: '';
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        z-index: 2;
+                        left: 0;
+                        top: 0;
+                        background: rgba(0, 0, 0, 0.164);
+                        transition: $trans;
+                    }
+                    &:hover {
+                        &::after {
+                            opacity: 0;
+                        }
+                    }
+                }
+            }// end 1box
+        }// end gallery
+
+        //BLOG PAGE
+        #block_9 {
+            @extend #block_1;
+        }
+        #main-blog {
+            @extend %padding-section-1;
+            ._1-blog {
+                margin-bottom: 60px;
+                .blog-title {
+                    a {
+                        @include Roboto($f18,$regular);
+                        text-decoration: none;
+                        color: $title-color;
+                        transition: $trans;
+                    }
+                    span {
+                        @include Roboto($f18,$regular);
+                        color: $title-color;
+                    }
+                }// end blog-title
+                .blog-image-box {
+                    cursor: pointer;
+                    position: relative;
+                    overflow: hidden;
+                    margin-bottom: 30px;
+                    img {width:100%;}
+                    &:after {
+                        content: '';
+                        transition: $trans;
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        top:0;
+                        left: 0;
+                        z-index: 2;
+                        background: rgba(0, 0, 0, 0.164);
+                    }
+                }
+                .title-and-author {
+                    .author {
+                        @include Roboto($f14,$regular);
+                        color: $title-color;
+                        padding-top: 10px;
+                        span.time {
+                            color: $s2;
+                            margin-right: 10px;
+                        }
+                        a.author {
+                            text-decoration: none;
+                            color: $dancing-font-color;
+                        }
+                    }
+                }
+                .content {
+                    p {
+                        @include Roboto($f14,$regular);
+                        color: $s2;
+                        padding-top: 30px;
+                    }
+                }
+                .read-more-and-comment {
+                    margin-top: 40px;
+                    padding-top: 20px;
+                    border-top: 2px dotted $s2;
+                    a {
+                        @include Roboto($f16,$regular);
+                        color: $title-color;
+                        text-decoration: none;
+                        transition: $trans;
+                        &:hover {
+                            color: $dancing-font-color;
+                        }
+                    }
+                    a.readMore {
+                        float: left
+                    }
+                    a.comment {
+                        float: right;
+                    }
+                    .tags {
+                        float: left;
+                        @include Roboto($f16,$regular);
+                        color: $title-color;
+                        a {
+                            color: $dancing-font-color;
+                        }
+                    }
+                }
+                ul {
+                    padding-top: 30px;
+                    list-style:none;
+                    li {
+                        @include Roboto($f14,$regular);
+                        color: $s2;
+                        margin-bottom: 10px;
+                        i {
+                            font-size: $f12;
+                            color: $dancing-font-color;
+                            margin-right: 10px;
+                        }
+                    }
+                }
+                iframe {
+                    margin-top: 30px;
+                    width: 100%;
+                    height: 410px;
+                }
+                &:hover {
+                    .blog-image-box:after {
+                        opacity:0;
+                    }
+                    .blog-title {
+                        a {
+                            color: $dancing-font-color;
+                        }
+                    }
+                }
+            }// end 1-blog
+        }// end Main-blog
+        #aside {
+            @extend %padding-section-1;
+            form {
+                position: relative;
+                margin-bottom: 30px;
+                input[type=text]{
+                    width: 100%;
+                    height: 40px;
+                    border: 1px solid $s2;
+                    padding: 0 20px;
+                    transition: $trans;
+                }
+                input[type='text']{
+                    @include Roboto($f14,$regular);
+                }
+                input::placeholder {
+                    color: $s2;
+                }
+                button[type=submit] {
+                    cursor: pointer;
+                    -webkit-appearance: none;
+                    border: none;
+                    background: none;
+                    position: absolute;
+                    top: 6px;
+                    right: 23px;
+                    color: $s2;
+                    &:hover {
+                        color: $title-color;
+                    }
+                }
+                input:focus {
+                    border: 1px solid $dancing-font-color;
+                    outline: $dancing-font-color;
+                }
+            }// end form
+            .categories{
+                p {
+                    @include Roboto($f18,$bold);
+                    margin-bottom: 30px;
+                }
+                ul {
+                    list-style: none;
+                    li {
+                        margin-bottom: 20px;
+                        padding-left: 10px;
+                        a {
+                            i {
+                                margin-right: 10px;
+                            }
+                            @include Roboto($f14,$regular);
+                            text-decoration: none;
+                            color: $title-color;
+                            transition: $trans;
+                            &:hover {
+                                color: $dancing-font-color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // CONTACT PAGE
+        #message {
+            @extend %padding-section-1;
+            padding-bottom: 0!important;
+            .contact-image-box {
+                img {width: 100%}
+            }
+            .right {
+                .title {
+                    padding-top: 40px;
+                    h5 {
+                        font-size: $f30;
+                    }
+                    h4 {
+                        font-size: $f28;
+                    }
+                }
+                form {
+                    width:100%;
+                    display: flex;
+                    flex-wrap: wrap;
+                    p {
+                        padding-left: 0;
+                    }
+                    p.valid-form {
+                        margin-bottom: 30px;
+                        padding-left:0;
+                        input {
+                            width: 100%;
+                            padding: 10px 25px;
+                            background: $white;
+                            border-style: solid;
+                            border: 1px solid $s2;
+                            color: $title-color;
+                            transition: $trans;
+                            position: relative;
+                            height: 45px;
+                            display: block;
+                        }
+                        input:focus {
+                            border: 1px solid $dancing-font-color;
+                            outline: $dancing-font-color;
+                        }
+                        input::placeholder {
+                            @include Roboto($f13,$regular);
+                            color: $title-color;
+                        }
+                        input[type='text']{
+                            @include Roboto($f13,$regular);
+                        }
+                        input[type=number]::-webkit-inner-spin-button, 
+                        input[type=number]::-webkit-outer-spin-button { 
+                        -webkit-appearance: none; 
+                        margin: 0; 
+                        }
+                        textarea {
+                            width: 100%;
+                            padding: 10px 25px;
+                            background: $white;
+                            border-style: solid;
+                            border: 1px solid $s2;
+                            color: $title-color;
+                            transition: $trans;
+                            position: relative;
+                            @include Roboto($f13,$regular);
+                        }
+                        textarea::placeholder {
+                            @include Roboto($f13,$regular);
+                            color: $title-color;
+                        }
+                    }
+                    button#send {
+                        width: 100%;
+                        padding: 16px 45px;
+                        color: $title-color;
+                        background: $dancing-font-color;
+                        @include Roboto($f12,$bold);
+                        text-transform: uppercase;
+                        transition: $trans;
+                        border-radius: 0;
+                        border: 1px solid $dancing-font-color;
+                        margin-top: 30px;
+                        &:hover {
+                            background: $white;
+                            color: $dancing-font-color;
+        
+                        }
+                    }
+                }// end form
+            }
+        }// end message
+        #block_10 {
+            @extend #block_1;
+            .block_1-inner {
+                background-image: url(../images/4.jpg);
+            }
+        }
+        #branch {
+            @extend %padding-section-1;
+            ._1-branch {
+                .location-image-box {
+                    margin-bottom: 40px;
+                    img {width: 100%}
+                }
+                ul.location {
+                    list-style: none;
+                    li {
+                        position: relative;
+                        padding-left: 30px;
+                        margin-bottom: 10px;
+                        @include Roboto($f13,$regular);
+                        color: $s2;
+                        img {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                        }
+                    }
+                }
+            }// end 1 branch
+        }
+    }
+}// end main
+                
+
+                
+                
+
+footer {
+    background: rgba(0,0,0,0.96);
+    @extend %padding-section-1;
+    .main-title {
+        @include Roboto($f16,$regular);
+        color: $silver-color;
+        margin-bottom: 50px;
+        text-transform: uppercase;
+    }
+    ._1 {
+        p._1 {
+            @include Roboto($f14,$regular);
+            color: $silver-color;
+            margin: 20px 0;
+        }
+        ul.contact-info {
+            position: relative;
+            list-style: none;
+            color: $silver-color;
+            @include Roboto($f14,$regular);
+            li {
+                position: relative;
+                padding: 0 0 0 30px;
+                margin-bottom: 10px;
+                line-height: 24px;
+                span {
+                    position: absolute;
+                    top: 0px;
+                    left: 0;
+                    line-height: 24px;
+                }
+            }
+        }
+    }// end _1
+    ._2 {
+        ul {
+            list-style: none;
+            li {
+                margin-bottom: 10px;
+                a {
+                    text-decoration: none;
+                    @include Roboto($f14,$regular);
+                    color: $silver-color;
+                    transition: $trans;
+                    &:hover {
+                        color: $dancing-font-color;
+                    }
+                }
+            }
+        }
+    }// end _2
+    ._3 {
+        ._1-post {
+            position: relative;
+            margin-bottom: 20px;
+            padding-left: 75px;
+            cursor: pointer;
+            .image-box {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 62px;
+                height: 62px;
+                overflow: hidden;
+                border-radius: 50%;
+                border: 2px solid $silver-color;
+            }
+            .content {
+                @include Roboto($f14,$regular);
+                color: $silver-color;
+                a.title-blog {
+                    padding-top: 10px;
+                    @include Roboto($f14,$regular);
+                    color: $silver-color;
+                    text-decoration: none;
+                    transition: $trans;
+                    display: block;
+                }
+                .time {
+                    color: $text-color;
+                }
+            }
+            &:hover {
+                a.title-blog {
+                    color: $dancing-font-color;
+                }
+            }
+        }
+    }// end _3
+    ._4 {
+        ul {
+            color: $silver-color;
+            @include Roboto($f14,$regular);
+            list-style: none;
+            li {
+                margin-bottom: 20px;
+                span.hours {
+                    float: right;
+                }
+            }
+        }
+    }//end _4
+}
+.copyright {
+    @include Roboto($f14,$regular);
+    color: $silver-color;
+    background: rgba(0, 0, 0, 1);
+    padding: 40px 0;
+}
+
+// Animation 
+.carousel-fade .carousel-item{
+    transition-duration: 2s ;
+}
+
+-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+.animated {
+-webkit-animation-duration: 1s;
+animation-duration: 1s;
+-webkit-animation-fill-mode: both;
+animation-fill-mode: both;
+}
+                            
+@-webkit-keyframes fadeInDown {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+}
+  
+@keyframes fadeInDown {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+}
+  
+.fadeInDown {
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+}
+
+@import 'mobile';
+                    
+//ABOUT PAGE
+
+    
+
+                  
+                        
+                
+                
+
+        
+                    
+
+        

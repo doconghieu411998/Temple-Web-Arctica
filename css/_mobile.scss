@@ -1,0 +1,341 @@
+// Website Sample này được code bời Dương Hoàng Việt
+
+* { margin: 0; padding: 0}
+button:focus { outline: 0}
+
+// Font
+@mixin Roboto($size,$weight) {
+    font-family: 'Roboto Slab', serif;
+    font-size: $size;
+    font-weight: $weight;
+}
+
+@mixin DancingScript($size,$weight) {
+    font-family: 'Dancing Script', cursive;
+    font-size: $size;
+    font-weight: $weight;
+}
+
+// Font-size
+$f50: 50px;
+$f38: 38px;
+$f36: 36px;
+$f30: 30px;
+$f28: 28px;
+$f26: 26px;
+$f24: 24px;
+$f20: 20px;
+$f18: 18px;
+$f16: 16px;
+$f14: 14px;
+$f13: 13px;
+$f12: 12px;
+
+//Color:
+$text-color: #777777;
+$silver-color: #dddddd;
+$title-color: #333333;
+$dancing-font-color: #feb518;
+$white: #fff;
+$s2: #6e6e6e;
+
+// Transition
+$trans: 0.4s;
+
+// Font-Attribute
+$regular: 400;
+$bold: 700;
+
+// More
+@mixin read-more-button {
+    background: $dancing-font-color;
+    padding: 10px 40px;
+    position: relative;
+    text-decoration: none;
+    color: $title-color;
+    @include Roboto($f14,$bold);
+    line-height: 26px;
+    border: 2px solid transparent;
+    margin-top: 25px;
+    transition: $trans;
+    &:hover {
+        background: $white;
+        color: $dancing-font-color;
+        border: 2px solid $dancing-font-color;
+    }
+}
+@mixin padding-section-1-mobile {
+    padding-top: 90px!important;
+    padding-bottom: 90px!important;
+}
+@mixin padding-block-mobile {
+    padding: 100px 0!important;
+}
+@mixin title-mobile {
+    margin-bottom: 60px;
+    padding-right: 15px;
+    padding-left: 15px;
+    h5 {
+        font-size: $f30!important;
+
+    }
+    h4 {
+        font-size: $f28!important;
+
+    }
+}
+
+@media screen and (max-width: 576px) {
+    header {
+        #header-top {
+            height: auto;
+            .social {
+                text-align: center;
+                width:100%;
+                padding-left: 110px;
+            }
+            .phone {
+               text-align: center;
+            }
+            .opening-hours {
+                display: none;
+            }
+        }
+        #Nav {
+            button.open-button {
+                display: block;
+            }
+        }
+    }//end header
+    main {
+        article {
+            .title {
+                @include title-mobile();
+            }
+            #slider {
+                ._1slide {
+                    height: 30vh!important;
+                    margin-top: 12vh;
+                    .slide-caption {
+                        display: none;
+                    }
+                }
+                a.left,a.right {
+                    top: 65%!important;
+                }
+            }//end slider
+            #introduce {
+                @include padding-section-1-mobile;
+            }//end introduce
+            #block_1 {
+                .block_1-inner {
+                    @include padding-block-mobile;
+                    .title {
+                        margin-bottom: 0!important;
+                        // padding-left: 0!important;
+                        // padding-right: 0!important;
+                    }
+                }
+            }// end block_1
+            #special {
+                @include padding-section-1-mobile();
+            }// end special
+            #menu-tab {
+                @include padding-section-1-mobile();
+                padding-bottom: 0!important;
+                ul.list-tab {
+                    margin-top: -130px!important;
+                }
+                ul {
+                    li {
+                        ._1tab {
+                            @include padding-section-1-mobile();
+                            ._1dish {
+                                ._1dish-inner {
+                                    ul.info {
+                                        li {
+                                            font-size: $f14!important;
+                                            span.name {
+                                                width: 75%;
+                                            }
+                                            span.dotted {
+                                                display: none;
+                                            }
+                                            span.desc {
+                                                font-size: $f12!important;
+                                            }
+                                        }
+                                    }
+                                    .detail-info {
+                                        padding: 20px;
+                                        width:100%;
+                                        height: auto;
+                                        .img-thumbnail-dish {
+                                            display: block;
+                                            position: none;
+                                            float: none;
+                                            img {
+                                                width: 160%;
+                                                position: static;
+                                            }
+                                        }
+                                        .info-block {
+                                            width:100%;
+                                            float: left;
+                                            margin-left: auto;
+                                        }
+                                    }
+                                }
+                            }//end _1dish
+                        }// end _1tab
+                    }
+                }
+            }//end menu-tab
+            #feedback {
+                @include padding-section-1-mobile();
+                ._1-fb-slide {
+                    font-size: $f14!important;
+                }
+            }//end feedback
+            #chefs {
+                @include padding-section-1-mobile();
+                ._1-chef-inner {
+                    .image-box {
+                        margin: 0 40px;
+                    }
+                }
+            }// end chefs
+            #reservation {
+                @include  padding-section-1-mobile();
+                button#send {
+                    width: 100%;
+                }
+            }// end reservation
+            #meeting {
+                @include padding-section-1-mobile();
+                .content {
+                    padding-left: 15px!important;
+                    margin-bottom: 30px;
+                    .title {
+                        padding-left: 0;
+                    }
+                }
+                .picture-1 {
+                    padding-right: 3px!important;
+                }
+                .picture-2 {
+                    padding-left: 3px!important;
+                }
+            }// end meeting
+
+            //ABOUT PAGE
+            #block_3 {
+                margin-top: 80px;
+            }// end block_3
+            #meeting2 {
+                @include padding-section-1-mobile();
+                .content {
+                    padding-left: 15px!important;
+                    margin-bottom: 30px;
+                    .title {
+                        padding-left: 0!important;
+                    }
+                }
+            }// end meeting2
+            #services {
+                @include padding-section-1-mobile();
+                .title {
+                    @include title-mobile();
+                }
+                ._1-services {
+                    margin-bottom: 20px;
+                }
+            }// end services
+            #master-chef {
+                .master-chef-infor {
+                    margin-top: 7%;
+                }
+            }// end master-chef
+            #contact-us {
+                padding: 50px 0;
+                .contact-us-inner {
+                    a.read-more {
+                        margin-top: 40px;
+                        float: left;
+                        text-align: center;
+                    }
+                }
+            }// end contact-us
+
+            //RESERVATION PAGE
+            #block_4 {
+                margin-top: 80px;
+            }// end block_4
+            #booking-table {
+                @include padding-section-1-mobile();
+                .booking {
+                    p {
+                        font-size: $f14;
+                    }
+                }
+                button#send {
+                    width: 100%;
+                }
+            }// end booking-table
+
+            // MENU PAGE
+            #block_6 {
+                margin-top: 80px
+            }// block_6
+
+            //GALLERY PAGE
+            #block_8 {
+                margin-top: 80px;
+            }// end block_8
+            #gallery {
+                @include padding-section-1-mobile();
+            }// end gallery
+
+            //BLOG PAGE
+            #block_9 {
+                margin-top: 80px;
+            }
+            #main-blog {
+                @include padding-section-1-mobile();
+                iframe {
+                    height: 250px!important;
+                }
+            }//end main-blog
+            #aside {
+                @include padding-section-1-mobile();
+                padding-top: 0!important;
+            }// end aside
+
+            // CONTACT PAGE
+            #branch {
+                @include padding-section-1-mobile();
+                ._1-branch {
+                    margin-bottom: 30px;
+                }
+            }
+        }
+    }//end main
+    footer {
+        @include padding-section-1-mobile();
+        .main-title {
+            margin-bottom: 30px!important;
+        }
+        ._1 {
+            margin-bottom: 10px;
+        }
+        ._2 {
+            margin-bottom: 10px;
+        }
+        ._3 {
+            margin-bottom: 10px;
+        }
+    }
+    .copyright {
+        padding: 20px 0;
+    }
+}
